@@ -5,6 +5,7 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { format } from 'date-fns';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -41,7 +42,12 @@ const RepoDetail = () => {
               alt={`${repo.name} repository avatar`}
             />
           ) : null}
-          <small>Created On: {repo.created_at}</small>
+          <small className='section--details__date'>
+            Created On:{' '}
+            {repo.created_at
+              ? format(new Date(repo.created_at), 'yyyy-MM-dd')
+              : null}
+          </small>
         </article>
         <article className='article article-right'>
           <div>
