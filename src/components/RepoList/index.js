@@ -9,6 +9,7 @@ const RepoList = ({ response }) => {
             return (
               <RepoCard
                 key={item.id}
+                id={item.id}
                 name={item.name}
                 description={item.description}
                 repoURL={item.html_url}
