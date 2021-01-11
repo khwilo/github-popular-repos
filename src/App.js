@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-
+import RepoCard from './components/RepoCard';
 import { useFetchRemote } from './hooks';
 
 function App() {
@@ -23,16 +23,16 @@ function App() {
         {response
           ? response.items.map((item) => {
               return (
-                <div id={item.id}>
-                  <h2>{item.name}</h2>
-                  <p>{item.description}</p>
-                  <a href={item.homepage ? item.homepage : '#'}>Homepage</a>
-                  <a href={item.htmL_url ? item.htmL_url : '#'}>URL</a>
-                  <p>{item.language}</p>
-                  <p>Stars count: {item.stargazers_count}</p>
-                  <p>Open issues count: {item.open_issues_count}</p>
-                  <p>Watchers count: {item.watchers_count}</p>
-                </div>
+                <RepoCard
+                  key={item.id}
+                  name={item.name}
+                  description={item.description}
+                  language={item.language}
+                  repoURL={item.html_url}
+                  homepage={item.homepage}
+                  stargazersCount={item.stargazers_count}
+                  watchersCount={item.watchers_count}
+                />
               );
             })
           : null}
