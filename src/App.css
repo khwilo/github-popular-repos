@@ -7,4 +7,31 @@
 body {
   margin: 0;
   line-height: 1.5;
+  background-color: #fefffc;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* ====================
+  Typography
+==================== */
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  font-family: 'Gentium Basic', serif;
+}
+
+.header__title {
+  text-align: center;
+}
+
+/* ====================
+  Layout
+==================== */
+.wrapper {
+  padding: 1em;
 }

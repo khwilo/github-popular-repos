@@ -10,9 +10,11 @@ function App() {
   );
 
   return (
-    <div>
-      <header>
-        <h1>GitHub Popular Repositories sorted by Star count</h1>
+    <div className='wrapper'>
+      <header className='header'>
+        <h1 className='header__title'>
+          GitHub Popular Repositories sorted by Star count
+        </h1>
       </header>
 
       <main>
