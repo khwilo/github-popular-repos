@@ -1,3 +1,11 @@
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+  faExternalLinkAlt,
+  faEye,
+  faStar,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import './repoCard.css';
 
 const RepoCard = ({
@@ -11,10 +19,32 @@ const RepoCard = ({
   <section className='section'>
     <h2>{name}</h2>
     <p>{description}</p>
-    <p>Stars count: {stargazersCount}</p>
-    <p>Watchers count: {watchersCount}</p>
-    {homepage ? <a href={homepage}>Homepage</a> : null}
-    {repoURL ? <a href={repoURL}>Repo URL</a> : null}
+    <div className='d-flex'>
+      <p>
+        <FontAwesomeIcon icon={faStar} color='gray' /> {stargazersCount}
+      </p>
+      <p>
+        <FontAwesomeIcon icon={faEye} color='gray' /> {watchersCount}
+      </p>
+    </div>
+    <div className='section__footer'>
+      <div className='d-flex'>
+        <p>
+          {repoURL ? (
+            <a href={repoURL}>
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+          ) : null}
+        </p>
+        <p>
+          {homepage ? (
+            <a href={homepage}>
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+            </a>
+          ) : null}
+        </p>
+      </div>
+    </div>
   </section>
 );
 
