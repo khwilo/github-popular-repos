@@ -1,30 +1,6 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  line-height: 1.5;
-  background-color: #f7f7f7;
-  font-family: 'Open Sans', sans-serif;
-}
-
 /* ====================
   Typography
 ==================== */
-h1,
-h2,
-p {
-  margin-top: 0;
-}
-
-h1,
-h2 {
-  font-family: 'Gentium Basic', serif;
-}
-
 .header__title {
   text-align: center;
   line-height: 1;
@@ -35,11 +11,6 @@ h2 {
 ==================== */
 .wrapper {
   padding: 1em;
-}
-
-.d-flex {
-  display: flex;
-  justify-content: space-between;
 }
 
 @media (min-width: 625px) {
