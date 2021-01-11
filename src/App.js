@@ -1,6 +1,8 @@
-import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
+import NotFound from './components/NotFound';
+import RepoDetail from './components/RepoDetail';
 import RepoListContainer from './components/RepoList';
 import { useFetchRemote } from './hooks';
 
@@ -18,11 +20,21 @@ function App() {
       </header>
 
       <main>
-        <RepoListContainer
-          response={response}
-          loading={loading}
-          error={error}
-        />
+        <Router>
+          <Switch>
+            <Route path='/repo/:id'>
+              <RepoDetail />
+            </Route>
+            <Route exact path='/'>
+              <RepoListContainer
+                response={response}
+                loading={loading}
+                error={error}
+              />
+            </Route>
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
       </main>
     </div>
   );
