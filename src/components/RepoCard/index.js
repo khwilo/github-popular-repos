@@ -1,20 +1,20 @@
+import './repoCard.css';
+
 const RepoCard = ({
   name,
   description,
   homepage,
   repoURL,
-  language,
   stargazersCount,
   watchersCount,
 }) => (
-  <section>
+  <section className='section'>
     <h2>{name}</h2>
     <p>{description}</p>
-    {homepage ? <a href={homepage}>Homepage</a> : null}
-    {repoURL ? <a href={repoURL}>Repo URL</a> : null}
-    <p>{language}</p>
     <p>Stars count: {stargazersCount}</p>
     <p>Watchers count: {watchersCount}</p>
+    {homepage ? <a href={homepage}>Homepage</a> : null}
+    {repoURL ? <a href={repoURL}>Repo URL</a> : null}
   </section>
 );
 

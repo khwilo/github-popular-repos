@@ -27,7 +27,6 @@ function App() {
                   key={item.id}
                   name={item.name}
                   description={item.description}
-                  language={item.language}
                   repoURL={item.html_url}
                   homepage={item.homepage}
                   stargazersCount={item.stargazers_count}
