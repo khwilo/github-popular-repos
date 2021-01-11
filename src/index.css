@@ -11,6 +11,16 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
 /* ====================
   Typography
 ==================== */
@@ -25,12 +35,24 @@ h2 {
   font-family: 'Gentium Basic', serif;
 }
 
+.text-gray {
+  border-bottom: 2px solid black;
+}
+
 /* ====================
   Layout
 ==================== */
 .d-flex {
   display: flex;
   justify-content: space-between;
+}
+
+.d-flex-ml {
+  display: flex;
+}
+
+.d-flex-ml > * + * {
+  margin-left: 2em;
 }
 
 .section + .section {
