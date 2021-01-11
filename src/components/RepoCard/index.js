@@ -5,10 +5,12 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 import './repoCard.css';
 
 const RepoCard = ({
+  id,
   name,
   description,
   homepage,
@@ -17,34 +19,36 @@ const RepoCard = ({
   watchersCount,
 }) => (
   <section className='section'>
-    <h2>{name}</h2>
-    <p>{description}</p>
-    <div className='d-flex'>
-      <p>
-        <FontAwesomeIcon icon={faStar} color='gray' /> {stargazersCount}
-      </p>
-      <p>
-        <FontAwesomeIcon icon={faEye} color='gray' /> {watchersCount}
-      </p>
-    </div>
-    <div className='section__footer'>
+    <Link to={`repo/${id}`}>
+      <h2>{name}</h2>
+      <p>{description}</p>
       <div className='d-flex'>
         <p>
-          {repoURL ? (
-            <a href={repoURL}>
-              <FontAwesomeIcon icon={faGithub} />
-            </a>
-          ) : null}
+          <FontAwesomeIcon icon={faStar} color='gray' /> {stargazersCount}
         </p>
         <p>
-          {homepage ? (
-            <a href={homepage}>
-              <FontAwesomeIcon icon={faExternalLinkAlt} />
-            </a>
-          ) : null}
+          <FontAwesomeIcon icon={faEye} color='gray' /> {watchersCount}
         </p>
       </div>
-    </div>
+      <div className='section__footer'>
+        <div className='d-flex'>
+          <p>
+            {repoURL ? (
+              <a href={repoURL}>
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
+            ) : null}
+          </p>
+          <p>
+            {homepage ? (
+              <a href={homepage}>
+                <FontAwesomeIcon icon={faExternalLinkAlt} />
+              </a>
+            ) : null}
+          </p>
+        </div>
+      </div>
+    </Link>
   </section>
 );
 
