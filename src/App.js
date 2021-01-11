@@ -20,17 +20,15 @@ function App() {
       </header>
 
       <main>
+        {loading ? <div>Loading...</div> : null}
+        {error ? <div>Error fetching data</div> : null}
         <Router>
           <Switch>
             <Route path='/repo/:id'>
               <RepoDetail />
             </Route>
             <Route exact path='/'>
-              <RepoListContainer
-                response={response}
-                loading={loading}
-                error={error}
-              />
+              <RepoListContainer response={response} />
             </Route>
             <Route component={NotFound} />
           </Switch>
