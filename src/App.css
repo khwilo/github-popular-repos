@@ -12,23 +12,3 @@
 .wrapper {
   padding: 1em;
 }
-
-@media (min-width: 625px) {
-  @supports (display: grid) {
-    .repositories {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1em;
-    }
-  }
-}
-
-.section + .section {
-  margin-top: 1em;
-}
-
-@media (min-width: 625px) {
-  .section + .section {
-    margin-top: 0;
-  }
-}

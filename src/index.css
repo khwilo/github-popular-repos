@@ -32,3 +32,13 @@ h2 {
   display: flex;
   justify-content: space-between;
 }
+
+.section + .section {
+  margin-top: 1em;
+}
+
+@media (min-width: 625px) {
+  .section + .section {
+    margin-top: 0;
+  }
+}
