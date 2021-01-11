@@ -53,7 +53,10 @@ const RepoDetail = () => {
           <div>
             <h2>
               {repo.language ? (
-                <span className='text-gray'>Programming Language:</span>
+                <span>
+                  <span className='language-heading'>Programming Language</span>
+                  : {repo.language}
+                </span>
               ) : null}
             </h2>
             <p>{repo.description}</p>

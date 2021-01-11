@@ -15,6 +15,10 @@
   font-weight: 700;
 }
 
+.language-heading {
+  border-bottom: 2px solid black;
+}
+
 .article-left {
   display: flex;
   flex-direction: column;
