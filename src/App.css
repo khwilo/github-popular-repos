@@ -37,6 +37,11 @@ h2 {
   padding: 1em;
 }
 
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (min-width: 625px) {
   @supports (display: grid) {
     .repositories {
