@@ -1,7 +1,7 @@
 import React from 'react';
-
 import './App.css';
-import RepoCard from './components/RepoCard';
+
+import RepoListContainer from './components/RepoList';
 import { useFetchRemote } from './hooks';
 
 function App() {
@@ -18,25 +18,11 @@ function App() {
       </header>
 
       <main>
-        {loading ? <div>Loading...</div> : null}
-        {error ? <div>Error fetching data</div> : null}
-        <div className='repositories'>
-          {response
-            ? response.items.map((item) => {
-                return (
-                  <RepoCard
-                    key={item.id}
-                    name={item.name}
-                    description={item.description}
-                    repoURL={item.html_url}
-                    homepage={item.homepage}
-                    stargazersCount={item.stargazers_count}
-                    watchersCount={item.watchers_count}
-                  />
-                );
-              })
-            : null}
-        </div>
+        <RepoListContainer
+          response={response}
+          loading={loading}
+          error={error}
+        />
       </main>
     </div>
   );
