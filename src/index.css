@@ -35,6 +35,11 @@ h2 {
   font-family: 'Gentium Basic', serif;
 }
 
+.header-title {
+  text-align: center;
+  line-height: 1;
+}
+
 /* ====================
   Layout
 ==================== */
