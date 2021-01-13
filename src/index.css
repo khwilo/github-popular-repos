@@ -4,8 +4,12 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+ul {
   margin: 0;
+}
+
+body {
   line-height: 1.5;
   background-color: #f7f7f7;
   font-family: 'Open Sans', sans-serif;
@@ -19,6 +23,12 @@ img {
 a {
   text-decoration: none;
   color: #000;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  color: #6ad198;
 }
 
 /* ====================
@@ -54,6 +64,16 @@ h2 {
 
 .d-flex-ml > * + * {
   margin-left: 2em;
+}
+
+.wrapper {
+  padding: 8em 2em;
+}
+
+@media (min-width: 625px) {
+  .wrapper {
+    padding: 8em 5em;
+  }
 }
 
 .section + .section {

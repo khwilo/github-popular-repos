@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import './App.css';
@@ -19,10 +19,33 @@ function App({ actions, loading, repositories }) {
   }, []);
 
   return (
-    <div className='wrapper'>
-      <main>
-        {loading ? <div>Loading...</div> : null}
-        <Router>
+    <div>
+      {loading ? <div>Loading...</div> : null}
+      <Router>
+        <header className='header'>
+          <div className='header__wrapper'>
+            <h1 className='site-logo'>
+              <Link to='/' className='site-logo__link'>
+                GP
+              </Link>
+            </h1>
+            <nav className='nav'>
+              <ul className='nav__list'>
+                <li className='nav__item'>
+                  <Link className='nav__link' to='/'>
+                    Home
+                  </Link>
+                </li>
+                <li className='nav__item'>
+                  <Link className='nav__link' to='/favorites'>
+                    Favorites
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        <main className='wrapper'>
           <Switch>
             <Route path='/repo/:id'>
               <RepoDetail />
@@ -32,8 +55,8 @@ function App({ actions, loading, repositories }) {
             </Route>
             <Route component={NotFound} />
           </Switch>
-        </Router>
-      </main>
+        </main>
+      </Router>
     </div>
   );
 }

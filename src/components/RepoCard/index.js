@@ -18,8 +18,8 @@ const RepoCard = ({
   stargazersCount,
   watchersCount,
 }) => (
-  <section className='section'>
-    <Link to={`repo/${id}`}>
+  <section className='section section--detail'>
+    <Link className="detail-linkWrapper" to={`repo/${id}`}>
       <h2>{name}</h2>
       <p>{description}</p>
       <div className='d-flex'>
