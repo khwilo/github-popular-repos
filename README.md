@@ -17,9 +17,9 @@ Visit the live site here: <https://github-popular-repos.vercel.app>
 git clone https://github.com/khwilo/github-popular-repos.git
 ```
 
-2. Run `yarn` to install the project dependencies
+2. Run `yarn` or `npm install` to install the project dependencies
 
-3. Run `yarn start` to run a local development server
+3. Run `yarn start` or `npm start` to run a local development server
 
 ## Credits
 
