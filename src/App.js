@@ -21,7 +21,6 @@ function App({ actions, loading, repositories }) {
 
   return (
     <div>
-      {loading ? <div>Loading...</div> : null}
       <Router>
         <header className='header'>
           <div className='header__wrapper'>
@@ -53,7 +52,10 @@ function App({ actions, loading, repositories }) {
             </Route>
             <Route path='/favorites' component={FavoritesList} />
             <Route exact path='/'>
-              <RepoListContainer repositories={repositories} />
+              <RepoListContainer
+                repositories={repositories}
+                loading={loading}
+              />
             </Route>
             <Route component={NotFound} />
           </Switch>
