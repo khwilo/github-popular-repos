@@ -4,8 +4,12 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+ul {
   margin: 0;
+}
+
+body {
   line-height: 1.5;
   background-color: #f7f7f7;
   font-family: 'Open Sans', sans-serif;
@@ -19,6 +23,12 @@ img {
 a {
   text-decoration: none;
   color: #000;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+  color: #6ad198;
 }
 
 /* ====================
@@ -35,6 +45,11 @@ h2 {
   font-family: 'Gentium Basic', serif;
 }
 
+.header-title {
+  text-align: center;
+  line-height: 1;
+}
+
 /* ====================
   Layout
 ==================== */
@@ -49,6 +64,29 @@ h2 {
 
 .d-flex-ml > * + * {
   margin-left: 2em;
+}
+
+.wrapper {
+  padding: 8em 2em;
+}
+
+@media (min-width: 625px) {
+  .wrapper {
+    padding: 8em 5em;
+  }
+}
+
+.section {
+  background-color: #ffffff;
+  padding: 1em 2em;
+  word-wrap: break-word;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+
+.section:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .section + .section {

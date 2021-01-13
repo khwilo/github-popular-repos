@@ -6,7 +6,7 @@ Tasks:
 
 - [x] Display a list of repositories by title and author (e.g the top 10).
 - [x] Show the details of a selected repository.
-- [ ] Bookmark/favorite the selected repository (Feel free to use a data store of your choice (SQLite, on-device cache, Firebase, etc) to track these ‘bookmark’ actions).
+- [x] Bookmark/favorite the selected repository (Feel free to use a data store of your choice (SQLite, on-device cache, Firebase, etc) to track these ‘bookmark’ actions).
 
 ## Credits
 

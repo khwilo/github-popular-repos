@@ -2,54 +2,97 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faExternalLinkAlt,
   faEye,
+  faHeart,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 
+import * as favoriteActions from '../../redux/actions/favoriteActions';
 import './repoCard.css';
 
-const RepoCard = ({
-  id,
-  name,
-  description,
-  homepage,
-  repoURL,
-  stargazersCount,
-  watchersCount,
-}) => (
-  <section className='section'>
-    <Link to={`repo/${id}`}>
-      <h2>{name}</h2>
-      <p>{description}</p>
-      <div className='d-flex'>
-        <p>
-          <FontAwesomeIcon icon={faStar} color='gray' /> {stargazersCount}
-        </p>
-        <p>
-          <FontAwesomeIcon icon={faEye} color='gray' /> {watchersCount}
-        </p>
+const RepoCard = ({ favorites, actions, item }) => {
+  const [isFavorite, setIsFavorite] = React.useState(false);
+
+  React.useEffect(() => {
+    const result = favorites.some((favorite) => favorite.id === item.id);
+    setIsFavorite(result);
+  }, [favorites, item]);
+
+  const handleToggleFavorites = (value) => {
+    if (isFavorite) {
+      actions.removeFromFavorites(value);
+    } else {
+      actions.addToFavorites(value);
+    }
+  };
+
+  return (
+    <section className='section section--detail'>
+      <div className='detail-top d-flex'>
+        <h2>{item.name}</h2>
+        <FontAwesomeIcon
+          icon={faHeart}
+          color={isFavorite ? 'crimson' : 'gray'}
+          onClick={() => handleToggleFavorites(item)}
+        />
       </div>
-      <div className='section__footer'>
+      <Link className='detail-linkWrapper' to={`repo/${item.id}`}>
+        <p>{item.description}</p>
         <div className='d-flex'>
           <p>
-            {repoURL ? (
-              <a href={repoURL}>
-                <FontAwesomeIcon icon={faGithub} />
-              </a>
-            ) : null}
+            <FontAwesomeIcon icon={faStar} color='gray' />{' '}
+            {item.stargazers_count}
           </p>
           <p>
-            {homepage ? (
-              <a href={homepage}>
-                <FontAwesomeIcon icon={faExternalLinkAlt} />
-              </a>
-            ) : null}
+            <FontAwesomeIcon icon={faEye} color='gray' /> {item.watchers_count}
           </p>
         </div>
-      </div>
-    </Link>
-  </section>
-);
+        <div className='section__footer'>
+          <div className='d-flex'>
+            <p>
+              {item.html_url ? (
+                <a href={item.html_url}>
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
+              ) : null}
+            </p>
+            <p>
+              {item.homepage ? (
+                <a href={item.homepage}>
+                  <FontAwesomeIcon icon={faExternalLinkAlt} />
+                </a>
+              ) : null}
+            </p>
+          </div>
+        </div>
+      </Link>
+    </section>
+  );
+};
 
-export default RepoCard;
+function mapStateToProps(state) {
+  return {
+    favorites: state.favorites,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      addToFavorites: bindActionCreators(
+        favoriteActions.addRepositoryToFavorites,
+        dispatch
+      ),
+      removeFromFavorites: bindActionCreators(
+        favoriteActions.removeRepositoryFromFavorites,
+        dispatch
+      ),
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RepoCard);
