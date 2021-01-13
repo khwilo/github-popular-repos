@@ -9,7 +9,7 @@ import RepoDetail from './components/RepoDetail';
 import RepoListContainer from './components/RepoList';
 import * as repositoryActions from './redux/actions/repositoryActions';
 
-function App({ repositories, actions }) {
+function App({ actions, loading, repositories }) {
   React.useEffect(() => {
     if (repositories.length === 0) {
       actions.loadRepositories().catch((error) => {
@@ -27,8 +27,7 @@ function App({ repositories, actions }) {
       </header>
 
       <main>
-        {/* {loading ? <div>Loading...</div> : null}
-        {error ? <div>Error fetching data</div> : null} */}
+        {loading ? <div>Loading...</div> : null}
         <Router>
           <Switch>
             <Route path='/repo/:id'>
@@ -48,6 +47,7 @@ function App({ repositories, actions }) {
 function mapStateToProps(state) {
   return {
     repositories: state.repositories,
+    loading: state.apiCallsInProgress > 0,
   };
 }
 
