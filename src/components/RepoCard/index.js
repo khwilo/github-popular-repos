@@ -2,6 +2,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faExternalLinkAlt,
   faEye,
+  faHeart,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,8 +20,11 @@ const RepoCard = ({
   watchersCount,
 }) => (
   <section className='section section--detail'>
-    <Link className="detail-linkWrapper" to={`repo/${id}`}>
-      <h2>{name}</h2>
+    <Link className='detail-linkWrapper' to={`repo/${id}`}>
+      <div className='detail-top d-flex'>
+        <h2>{name}</h2>
+        <FontAwesomeIcon icon={faHeart} color='gray' />
+      </div>
       <p>{description}</p>
       <div className='d-flex'>
         <p>
