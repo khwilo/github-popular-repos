@@ -1,11 +1,11 @@
 import RepoCard from '../RepoCard';
 import './repoList.css';
 
-const RepoList = ({ response }) => {
+const RepoList = ({ repositories }) => {
   return (
     <div className='repositories'>
-      {response
-        ? response.items.map((item) => {
+      {repositories
+        ? repositories.map((item) => {
             return (
               <RepoCard
                 key={item.id}
