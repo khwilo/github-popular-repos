@@ -39,6 +39,9 @@ const RepoDetail = ({ actions, loading, repositories }) => {
   return (
     <div className='details-wrapper'>
       {loading ? <div>Loading...</div> : null}
+      <h1 className='header-title'>
+        GitHub Repository Detail
+      </h1>
       <section className='section section--details'>
         <article className='article article-left'>
           <h1 className='section--details__title'>{repo.name}</h1>

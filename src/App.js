@@ -20,12 +20,6 @@ function App({ actions, loading, repositories }) {
 
   return (
     <div className='wrapper'>
-      <header className='header'>
-        <h1 className='header__title'>
-          GitHub Popular Repositories sorted by Star count
-        </h1>
-      </header>
-
       <main>
         {loading ? <div>Loading...</div> : null}
         <Router>
