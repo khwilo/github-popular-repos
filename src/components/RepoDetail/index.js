@@ -2,36 +2,40 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faExternalLinkAlt,
   faEye,
-  faStar,
+  faStar
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { format } from 'date-fns';
 import React from 'react';
+import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { bindActionCreators } from 'redux'
+import * as repositoryActions from '../../redux/actions/repositoryActions'
 
-import { useFetchRemote } from '../../hooks';
 import './repoDetail.css';
 
-const RepoDetail = () => {
-  const [loading, response, error] = useFetchRemote(
-    'https://api.github.com/search/repositories?q=stars:%3E1&sort=stars'
-  );
-  const [repo, setRepo] = React.useState({});
+
+const RepoDetail = ({ repositories, actions }) => {
+  const [repo, setRepo] = React.useState({})
   const { id: paramsId } = useParams();
 
   React.useEffect(() => {
-    if (loading === false && response !== null) {
-      const data = response.items.find(
-        (item) => item.id === parseInt(paramsId, 10)
-      );
-      setRepo(data);
+    if (repositories.length === 0) {
+      actions.loadRepositories().catch((error) => {
+        alert('[FAILED TO LOAD REPOSITORIES]', error);
+      });
     }
-  }, [loading, response, paramsId]);
+  }, []);
+
+  React.useEffect(() => {
+    if (paramsId && repositories.length > 0) {
+      const repoById = repositories.find((item) => item.id === parseInt(paramsId, 10))
+      setRepo({...repoById})
+    }
+  }, [paramsId, repositories])
 
   return (
     <div className='details-wrapper'>
-      {loading ? <div>Loading...</div> : null}
-      {error ? <div>Error fetching data</div> : null}
       <section className='section section--details'>
         <article className='article article-left'>
           <h1 className='section--details__title'>{repo.name}</h1>
@@ -93,4 +97,18 @@ const RepoDetail = () => {
   );
 };
 
-export default RepoDetail;
+function mapStateToProps(state) {
+  return {
+    repositories: state.repositories
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      loadRepositories: bindActionCreators(repositoryActions.loadRepositories, dispatch)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RepoDetail);
