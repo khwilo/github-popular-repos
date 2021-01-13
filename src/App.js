@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 
 import './App.css';
+import FavoritesList from './components/Favorites';
 import NotFound from './components/NotFound';
 import RepoDetail from './components/RepoDetail';
 import RepoListContainer from './components/RepoList';
@@ -50,6 +51,7 @@ function App({ actions, loading, repositories }) {
             <Route path='/repo/:id'>
               <RepoDetail />
             </Route>
+            <Route path='/favorites' component={FavoritesList} />
             <Route exact path='/'>
               <RepoListContainer repositories={repositories} />
             </Route>
