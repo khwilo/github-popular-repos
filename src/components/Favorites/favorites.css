@@ -1,0 +1,19 @@
+.section.section--favorites:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.favorites__list {
+  font-size: 1.2rem;
+  padding: 0.5em 1em;
+  background-color: #ffffff;
+}
+
+.favorites__link {
+  font-weight: 700;
+}
+
+.favorites__link:hover,
+.favorites__link:focus {
+  text-decoration: none;
+  color: crimson;
+}
