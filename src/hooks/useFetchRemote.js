@@ -1,3 +1,12 @@
+/*
+ * Custom React hook for fetching data from an API.
+ * Utilizes React's useReducer and useState hooks to manage state.
+ * ------------------------------------------------------
+ * NOTE: The app use Redux to manage global state.
+ * View the the code from the redux folder.
+ * ------------------------------------------------------
+*/
+
 import React from 'react';
 
 function useFetchRemote(url) {
