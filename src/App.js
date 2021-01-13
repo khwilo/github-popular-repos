@@ -13,7 +13,7 @@ function App({ repositories, actions }) {
   React.useEffect(() => {
     if (repositories.length === 0) {
       actions.loadRepositories().catch((error) => {
-        alert('[FAILED TO LOAD FOLLOWERS]: ', error);
+        alert('[FAILED TO LOAD REPOSITORIES]: ', error);
       });
     }
   }, []);
