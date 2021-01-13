@@ -40,7 +40,6 @@ const RepoCard = ({ favorites, actions, item }) => {
           onClick={() => handleToggleFavorites(item)}
         />
       </div>
-      <p>{isFavorite ? 'YES' : 'NO'}</p>
       <Link className='detail-linkWrapper' to={`repo/${item.id}`}>
         <p>{item.description}</p>
         <div className='d-flex'>
