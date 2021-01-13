@@ -10,18 +10,7 @@ const RepoList = ({ repositories }) => {
       <div className='repositories'>
         {repositories
           ? repositories.map((item) => {
-              return (
-                <RepoCard
-                  key={item.id}
-                  id={item.id}
-                  name={item.name}
-                  description={item.description}
-                  repoURL={item.html_url}
-                  homepage={item.homepage}
-                  stargazersCount={item.stargazers_count}
-                  watchersCount={item.watchers_count}
-                />
-              );
+              return <RepoCard key={item.id} item={item} />;
             })
           : null}
       </div>
